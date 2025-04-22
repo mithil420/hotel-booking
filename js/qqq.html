@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Booking System</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
+
+      :root {
+         --main-color: #2B1103;
+         --sub-color: #DCC69C;
+         --white: #fff;
+         --border: .1rem solid rgba(220, 198, 156, .3);
+      }
+
+      * {
+         font-family: 'Montserrat', sans-serif;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         outline: none;
+         border: none;
+         text-decoration: none;
+      }
+
+      *::selection {
+         background-color: var(--sub-color);
+         color: var(--main-color);
+      }
+
+      *::-webkit-scrollbar {
+         height: .5rem;
+         width: 1rem;
+      }
+
+      *::-webkit-scrollbar-track {
+         background-color: transparent;
+      }
+
+      *::-webkit-scrollbar-thumb {
+         background-color: var(--sub-color);
+         border-radius: 5rem;
+      }
+
+      html {
+         font-size: 62.5%;
+         overflow-x: hidden;
+         scroll-behavior: smooth;
+         scroll-padding-top: 2rem;
+      }
+
+      body {
+         background-color: var(--main-color);
+      }
+
+      .page {
+         display: none;
+         padding: 3rem 2rem;
+         max-width: 1200px;
+         margin: 0 auto;
+      }
+
+      .page.active {
+         display: block;
+      }
+
+      .btn {
+         display: inline-block;
+         cursor: pointer;
+         padding: 1rem 3rem;
+         border: var(--border);
+         font-size: 1.8rem;
+         color: var(--sub-color);
+         text-align: center;
+         text-transform: capitalize;
+         transition: .2s linear;
+         margin-top: 1rem;
+         background-color: var(--main-color);
+      }
+
+      .btn:hover {
+         border-radius: 5rem;
+         background-color: var(--sub-color);
+         color: var(--main-color);
+      }
+
+      .header {
+         padding-bottom: 0;
+      }
+
+      .header .flex {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 1.5rem;
+      }
+
+      .header .flex .logo {
+         color: var(--sub-color);
+         font-size: 2.5rem;
+      }
+
+      .header .flex .btn {
+         margin-top: 0;
+      }
+
+      .header .flex .fa-bars {
+         font-size: 3rem;
+         cursor: pointer;
+         color: var(--sub-color);
+         display: none;
+      }
+
+      .header .navbar {
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         gap: 1.5rem;
+         margin-top: 2rem;
+         background-color: var(--sub-color);
+         padding: .5rem;
+         border-radius: .5rem;
+      }
+
+      .header .navbar a {
+         font-size: 1.8rem;
+         color: var(--main-color);
+         padding: 1rem 3rem;
+         border-radius: .5rem;
+      }
+
+      .header .navbar a:hover {
+         background-color: var(--main-color);
+         color: var(--sub-color);
+      }
+
+      .home .box img {
+         border-radius: .5rem;
+         height: 60vh;
+         width: 100%;
+         object-fit: cover;
+      }
+
+      .home .box .flex {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 1.5rem;
+         flex-wrap: wrap;
+         margin-top: 1.5rem;
+      }
+
+      .home .box .flex h3 {
+         font-size: 2.5rem;
+         color: var(--sub-color);
+         text-transform: capitalize;
+      }
+
+      .swiper-button-prev {
+         left: 0%;
+      }
+
+      .swiper-button-next {
+         right: 0;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+         padding: 3rem 2rem;
+         background-color: var(--white);
+         top: 40%;
+         opacity: .7;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+         color: var(--main-color);
+         font-size: 2rem;
+      }
+
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+         opacity: 1;
+      }
+
+      .availability form .flex {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 1.5rem;
+      }
+
+      .availability form .flex .box {
+         flex: 1 1 20rem;
+      }
+
+      .availability form .flex .box p {
+         font-size: 2rem;
+         color: var(--sub-color);
+      }
+
+      .availability form .flex .box .input {
+         width: 100%;
+         padding: 1rem 0;
+         font-size: 1.8rem;
+         background-color: var(--main-color);
+         color: var(--white);
+         border-bottom: var(--border);
+         margin: 1rem 0;
+      }
+
+      .availability form .flex .box input[type="date"]::-webkit-calendar-picker-indicator {
+         filter: invert(1);
+      }
+
+      .about .row {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 1.5rem;
+         text-align: center;
+         align-items: center;
+      }
+
+      .about .row .image {
+         flex: 1 1 40rem;
+      }
+
+      .about .row .image img {
+         width: 40rem;
+         border-radius: .5rem;
+      }
+
+      .about .row .content {
+         flex: 1 1 40rem;
+      }
+
+      .about .row .content h3 {
+         font-size: 3rem;
+         color: var(--sub-color);
+         text-transform: capitalize;
+         margin-bottom: 1rem;
+      }
+
+      .about .row .content p {
+         line-height: 2;
+         padding: 1rem 0;
+         font-size: 1.7rem;
+         color: var(--sub-color);
+      }
+
+      .about .row.revers {
+         flex-flow: row-reverse;
+         margin: 3rem 0;
+         flex-wrap: wrap;
+      }
+
+      .services .box-container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+         gap: 1.5rem;
+         justify-content: center;
+         align-items: flex-start;
+      }
+
+      .services .box-container .box {
+         padding: 2rem;
+         text-align: center;
+      }
+
+      .services .box-container .box img {
+         height: 7rem;
+         margin-bottom: 1rem;
+      }
+
+      .services .box-container .box h3 {
+         font-size: 2rem;
+         color: var(--sub-color);
+         text-transform: capitalize;
+         margin: 1rem 0;
+      }
+
+      .services .box-container .box p {
+         line-height: 2;
+         font-size: 1.5rem;
+         color: var(--sub-color);
+      }
+
+      .reservation form {
+         border: var(--border);
+         padding: 2rem;
+      }
+
+      .reservation form .flex {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 1.5rem;
+      }
+
+      .reservation form h3 {
+         background-color: var(--sub-color);
+         color: var(--main-color);
+         font-size: 2.5rem;
+         margin-bottom: 2rem;
+         border-radius: .5rem;
+         padding: 1.2rem;
+         text-align: center;
+         text-transform: capitalize;
+      }
+
+      .reservation form .flex .box {
+         flex: 1 1 40rem;
+      }
+
+      .reservation form .flex .box p {
+         font-size: 1.8rem;
+         color: var(--sub-color);
+      }
+
+      .reservation form .flex .box .input {
+         padding: 1rem 0;
+         margin: 1rem 0;
+         border-bottom: var(--border);
+         background: var(--main-color);
+         color: var(--white);
+         font-size: 1.8rem;
+         width: 100%;
+      }
+
+      .reservation form .flex .box input[type="date"]::-webkit-calendar-picker-indicator {
+         filter: invert(1);
+      }
+
+      .gallery img {
+         height: 40rem;
+         width: 60rem;
+         border-radius: .5rem;
+         object-fit: cover;
+         margin-bottom: 4rem;
+         user-select: none;
+      }
+
+      .swiper-pagination-bullets.swiper-pagination-horizontal {
+         bottom: 0;
+      }
+
+      .swiper-pagination-bullet {
+         background-color: var(--sub-color);
+      }
+
+      .swiper-pagination-bullet-active {
+         background-color: var(--white);
+      }
+
+      .contact .row {
+         display: flex;
+         align-items: flex-start;
+         gap: 3rem;
+         flex-wrap: wrap;
+      }
+
+      .contact .row form {
+         flex: 1 1 40rem;
+         border: var(--border);
+         border-radius: .5rem;
+         padding: 2rem;
+         text-align: center;
+      }
+
+      .contact .row .faq {
+         flex: 1 1 40rem;
+      }
+
+      .contact .row form h3 {
+         margin-bottom: 1rem;
+         border-radius: .5rem;
+         padding: 1.2rem;
+         color: var(--main-color);
+         background-color: var(--sub-color);
+         font-size: 2.2rem;
+         text-transform: capitalize;
+      }
+
+      .contact .row form .box {
+         padding: 1rem 0;
+         margin: 1rem 0;
+         border-bottom: var(--border);
+         font-size: 1.8rem;
+         color: var(--sub-color);
+         background: var(--main-color);
+         width: 100%;
+      }
+
+      .contact .row form .box::placeholder {
+         color: rgba(220, 198, 156, .6);
+      }
+
+      .contact .row form textarea {
+         height: 15rem;
+         resize: none;
+      }
+
+      .contact .row .faq .title {
+         padding-bottom: .5rem;
+         font-size: 2.5rem;
+         color: var(--sub-color);
+         text-transform: capitalize;
+         text-align: center;
+      }
+
+      .contact .row .faq .box {
+         border-radius: .5rem;
+         border: var(--border);
+         margin-top: 2rem;
+      }
+
+      .contact .row .faq .box h3 {
+         background-color: var(--sub-color);
+         color: var(--main-color);
+         padding: 1.5rem;
+         font-size: 2rem;
+         border-radius: .5rem;
+         cursor: pointer;
+      }
+
+      .contact .row .faq .box p {
+         padding: 1.5rem 2rem;
+         line-height: 2;
+         font-size: 1.6rem;
+         color: var(--sub-color);
+         display: none;
+      }
+
+      .contact .row .faq .box.active p {
+         display: inline-block;
+      }
+
+      .reviews {
+         padding-top: 0;
+      }
+
+      .reviews .box {
+         text-align: center;
+         user-select: none;
+         padding: 2rem;
+         margin-bottom: 4rem;
+      }
+
+      .reviews .box img {
+         height: 7rem;
+         width: 7rem;
+         border-radius: 50%;
+         object-fit: cover;
+      }
+
+      .reviews .box h3 {
+         margin: 1.5rem 0;
+         font-size: 2rem;
+         color: var(--sub-color);
+      }
+
+      .reviews .box p {
+         line-height: 2;
+         font-size: 1.5rem;
+         color: var(--sub-color);
+      }
+
+      .footer .box-container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+         gap: 1.5rem;
+         justify-content: center;
+         align-items: flex-start;
+         padding-bottom: 3rem;
+      }
+
+      .footer .box-container .box a {
+         display: block;
+         font-size: 1.8rem;
+         color: var(--sub-color);
+         padding: 1rem 0;
+      }
+
+      .footer .box-container .box a:hover {
+         color: var(--white);
+      }
+
+      .footer .box-container .box:first-child i {
+         margin-right: 1.7rem;
+      }
+
+      .footer .box-container .box:nth-child(2) {
+         text-align: center;
+      }
+
+      .footer .box-container .box:last-child {
+         text-align: right;
+      }
+
+      .footer .box-container .box:last-child i {
+         margin-left: 1.7rem;
+      }
+
+      .footer .credit {
+         border-radius: .5rem;
+         padding: 2rem;
+         text-align: center;
+         color: var(--main-color);
+         background-color: var(--sub-color);
+         font-size: 2rem;
+      }
+
+      /* media queries  */
+      @media (max-width: 991px) {
+         html {
+            font-size: 55%;
+         }
+
+         .header .flex .fa-bars {
+            display: inline-block;
+         }
+
+         .header .flex .btn {
+            display: none;
+         }
+
+         .header .navbar {
+            flex-flow: column;
+            padding: 2rem;
+            display: none;
+         }
+
+         .header .navbar.active {
+            display: flex;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .home .box img {
+            height: 40vh;
+         }
+
+         .swiper-button-next,
+         .swiper-button-prev {
+            top: 35%;
+         }
+      }
+
+      @media (max-width: 450px) {
+         html {
+            font-size: 50%;
+         }
+
+         .header .flex .logo {
+            font-size: 2rem;
+         }
+
+         .home .box img {
+            height: 25rem;
+         }
+
+         .about .row .image img {
+            width: 100%;
+         }
+
+         .gallery img {
+            height: 25rem;
+            width: 30rem;
+         }
+      }
+   </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<section class="header">
+   <div class="flex">
+      <a href="#" class="logo" id="home-link">Hotels And Resorts</a>
+      <a href="#" class="btn" id="availability-link">Check Availability</a>
+      <div id="menu-btn" class="fas fa-bars"></div>
+   </div>
+   <nav class="navbar">
+      <a href="#" id="home-nav">Home</a>
+      <a href="#" id="about-nav">About</a>
+      <a href="#" id="reservation-nav">Reservation</a>
+      <a href="#" id="gallery-nav">Gallery</a>
+      <a href="#" id="contact-nav">Contact</a>
+      <a href="#" id="reviews-nav">Reviews</a>
+   </nav>
+</section>
+
+<!-- Home Page -->
+<section class="page active" id="home-page">
+   <div class="swiper home-slider">
+      <div class="swiper-wrapper">
+         <div class="box swiper-slide">
+            <img src="images/home-img-1.jpg" alt="">
+            <div class="flex">
+               <h3>Luxurious Rooms</h3>
+               <a href="#" class="btn" id="availability-slider-link">Check Availability</a>
+            </div>
+         </div>
+         <div class="box swiper-slide">
+            <img src="images/home-img-2.jpg" alt="">
+            <div class="flex">
+               <h3>Food & Drinks</h3>
+               <a href="#" class="btn" id="reservation-slider-link">Make a Reservation</a>
+            </div>
+         </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+   </div>
+</section>
+
+<!-- About Page -->
+<section class="page" id="about-page">
+   <div class="about" id="about">
+      <div class="row">
+         <div class="image">
+            <img src="images/about-img-1.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>About Our Hotel</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem doloremque, quia dolorum quae voluptates quod. Quisquam voluptatum voluptatem doloremque, quia dolorum quae voluptates quod.</p>
+         </div>
+      </div>
+      <div class="row revers">
+         <div class="image">
+            <img src="images/about-img-2.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Our Facilities</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem doloremque, quia dolorum quae voluptates quod. Quisquam voluptatum voluptatem doloremque, quia dolorum quae voluptates quod.</p>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Reservation Page -->
+<section class="page" id="reservation-page">
+   <div class="availability" id="availability">
+      <form action="" method="post">
+         <div class="flex">
+            <div class="box">
+               <p>Check In <span>*</span></p>
+               <input type="date" name="check_in" class="input" required>
+            </div>
+            <div class="box">
+               <p>Check Out <span>*</span></p>
+               <input type="date" name="check_out" class="input" required>
+            </div>
+            <div class="box">
+               <p>Adults <span>*</span></p>
+               <select name="adults" class="input" required>
+                  <option value="1">1 Adult</option>
+                  <option value="2">2 Adults</option>
+                  <option value="3">3 Adults</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Children <span>*</span></p>
+               <select name="childs" class="input" required>
+                  <option value="0">0 Child</option>
+                  <option value="1">1 Child</option>
+                  <option value="2">2 Children</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Rooms <span>*</span></p>
+               <select name="rooms" class="input" required>
+                  <option value="1">1 Room</option>
+                  <option value="2">2 Rooms</option>
+                  <option value="3">3 Rooms</option>
+               </select>
+            </div>
+         </div>
+         <input type="submit" value="Check Availability" name="check" class="btn">
+      </form>
+   </div>
+
+   <div class="reservation" id="reservation">
+      <form action="" method="post">
+         <h3>Make a Reservation</h3>
+         <div class="flex">
+            <div class="box">
+               <p>Your Name <span>*</span></p>
+               <input type="text" name="name" class="input" required>
+            </div>
+            <div class="box">
+               <p>Your Email <span>*</span></p>
+               <input type="email" name="email" class="input" required>
+            </div>
+            <div class="box">
+               <p>Your Phone <span>*</span></p>
+               <input type="text" name="phone" class="input" required>
+            </div>
+            <div class="box">
+               <p>Room Type <span>*</span></p>
+               <select name="room_type" class="input" required>
+                  <option value="standard">Standard Room</option>
+                  <option value="deluxe">Deluxe Room</option>
+                  <option value="suite">Suite</option>
+               </select>
+            </div>
+         </div>
+         <input type="submit" value="Book Now" name="book" class="btn">
+      </form>
+   </div>
+</section>
+
+<!-- Gallery Page -->
+<section class="page" id="gallery-page">
+   <div class="gallery" id="gallery">
+      <div class="swiper gallery-slider">
+         <div class="swiper-wrapper">
+            <img src="images/gallery-img-1.jpg" class="swiper-slide" alt="">
+            <img src="images/gallery-img-2.jpg" class="swiper-slide" alt="">
+            <img src="images/gallery-img-3.jpg" class="swiper-slide" alt="">
+            <img src="images/gallery-img-4.jpg" class="swiper-slide" alt="">
+            <img src="images/gallery-img-5.jpg" class="swiper-slide" alt="">
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+   </div>
+</section>
+
+<!-- Contact Page -->
+<section class="page" id="contact-page">
+   <div class="contact" id="contact">
+      <div class="row">
+         <form action="">
+            <h3>Send Us a Message</h3>
+            <input type="text" placeholder="Your Name" class="box">
+            <input type="email" placeholder="Your Email" class="box">
+            <input type="text" placeholder="Your Phone" class="box">
+            <textarea placeholder="Your Message" class="box" cols="30" rows="10"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+         </form>
+         <div class="faq">
+            <h3 class="title">Frequently Asked Questions</h3>
+            <div class="box active">
+               <h3>How to cancel my reservation?</h3>
+               <p>You can cancel your reservation by contacting our customer service or through the reservation confirmation email.</p>
+            </div>
+            <div class="box">
+               <h3>What payment methods are available?</h3>
+               <p>We accept all major credit cards, debit cards, and bank transfers.</p>
+            </div>
+            <div class="box">
+               <h3>What are the check-in/check-out times?</h3>
+               <p>Check-in is at 2 PM and check-out is at 12 PM.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Reviews Page -->
+<section class="page" id="reviews-page">
+   <div class="reviews" id="reviews">
+      <div class="swiper reviews-slider">
+         <div class="swiper-wrapper">
+            <div class="swiper-slide box">
+               <img src="images/pic-1.jpg" alt="">
+               <h3>John Doe</h3>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem doloremque.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/pic-2.jpg" alt="">
+               <h3>Jane Smith</h3>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem doloremque.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/pic-3.jpg" alt="">
+               <h3>Robert Johnson</h3>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem doloremque.</p>
+            </div>
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+   </div>
+</section>
+
+<!-- Footer Section -->
+<section class="footer">
+   <div class="box-container">
+      <div class="box">
+         <a href="tel:1234567890"><i class="fas fa-phone"></i> +123-456-7890</a>
+         <a href="mailto:hotel@example.com"><i class="fas fa-envelope"></i> hotel@example.com</a>
+         <a href="#"><i class="fas fa-map-marker-alt"></i> Mumbai, India</a>
+      </div>
+      <div class="box">
+         <a href="#" id="home-footer">Home</a>
+         <a href="#" id="about-footer">About</a>
+         <a href="#" id="reservation-footer">Reservation</a>
+         <a href="#" id="gallery-footer">Gallery</a>
+         <a href="#" id="contact-footer">Contact</a>
+         <a href="#" id="reviews-footer">Reviews</a>
+      </div>
+      <div class="box">
+         <a href="#">Facebook <i class="fab fa-facebook-f"></i></a>
+         <a href="#">Twitter <i class="fab fa-twitter"></i></a>
+         <a href="#">Instagram <i class="fab fa-instagram"></i></a>
+      </div>
+   </div>
+   <div class="credit">&copy; 2024 Hotel Booking System | All Rights Reserved</div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+   // Navigation functionality
+   document.addEventListener('DOMContentLoaded', function() {
+      // Get all page elements
+      const pages = {
+         home: document.getElementById('home-page'),
+         about: document.getElementById('about-page'),
+         reservation: document.getElementById('reservation-page'),
+         gallery: document.getElementById('gallery-page'),
+         contact: document.getElementById('contact-page'),
+         reviews: document.getElementById('reviews-page')
+      };
+
+      // Get all navigation links
+      const links = {
+         home: [
+            document.getElementById('home-link'),
+            document.getElementById('home-nav'),
+            document.getElementById('home-footer')
+         ],
+         about: [
+            document.getElementById('about-nav'),
+            document.getElementById('about-footer')
+         ],
+         reservation: [
+            document.getElementById('availability-link'),
+            document.getElementById('reservation-nav'),
+            document.getElementById('reservation-footer'),
+            document.getElementById('availability-slider-link'),
+            document.getElementById('reservation-slider-link')
+         ],
+         gallery: [
+            document.getElementById('gallery-nav'),
+            document.getElementById('gallery-footer')
+         ],
+         contact: [
+            document.getElementById('contact-nav'),
+            document.getElementById('contact-footer')
+         ],
+         reviews: [
+            document.getElementById('reviews-nav'),
+            document.getElementById('reviews-footer')
+         ]
+      };
+
+      // Function to show a specific page and hide others
+      function showPage(pageToShow) {
+         // Hide all pages
+         Object.values(pages).forEach(page => {
+            page.classList.remove('active');
+         });
+         
+         // Show the selected page
+         pages[pageToShow].classList.add('active');
+         
+         // Scroll to top
+         window.scrollTo(0, 0);
+      }
+
+      // Add event listeners to all navigation links
+      Object.entries(links).forEach(([pageName, pageLinks]) => {
+         pageLinks.forEach(link => {
+            if (link) {
+               link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  showPage(pageName);
+               });
+            }
+         });
+      });
+
+      // Initialize Swiper sliders
+      const homeSlider = new Swiper(".home-slider", {
+         loop: true,
+         effect: "coverflow",
+         spaceBetween: 30,
+         grabCursor: true,
+         coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: false,
+         },
+         navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+         },
+      });
+
+      const gallerySlider = new Swiper(".gallery-slider", {
+         loop: true,
+         effect: "coverflow",
+         slidesPerView: "auto",
+         centeredSlides: true,
+         grabCursor: true,
+         coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+         },
+         pagination: {
+            el: ".swiper-pagination",
+         },
+      });
+
+      const reviewsSlider = new Swiper(".reviews-slider", {
+         loop: true,
+         slidesPerView: "auto",
+         grabCursor: true,
+         spaceBetween: 30,
+         pagination: {
+            el: ".swiper-pagination",
+         },
+         breakpoints: {
+            768: {
+               slidesPerView: 1,
+            },
+            991: {
+               slidesPerView: 2,
+            },
+         },
+      });
+
+      // Mobile menu toggle
+      let navbar = document.querySelector('.header .navbar');
+      document.querySelector('#menu-btn').onclick = () => {
+         navbar.classList.toggle('active');
+      }
+
+      // FAQ functionality
+      document.querySelectorAll('.contact .row .faq .box h3').forEach(faqBox => {
+         faqBox.onclick = () => {
+            faqBox.parentElement.classList.toggle('active');
+         }
+      });
+   });
+</script>
+
+</body>
+</html>

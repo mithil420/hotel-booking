@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>complete responsive hotel booking website design tutorial</title>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+   
+<!-- header section starts  -->
+
+<section class="header">
+
+   <div class="flex">
+      <a href="#home" class="logo">Hotels And Resorts</a>
+      <div id="menu-btn" class="fas fa-bars"></div>
+   </div>
+
+   <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#reservation">reservation</a>
+      <a href="#gallery">gallery</a>
+      <a href="#contact">contact</a>
+      <a href="#reviews">reviews</a>
+      <a href="#myreservation">my reservation</a>
+   </nav>
+
+</section>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+   <div class="swiper home-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-1.jpg" alt="">
+            <div class="flex">
+               <h3>luxurious rooms</h3>
+               <a href="#availability" class="btn">check availability</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-2.jpg" alt="">
+            <div class="flex">
+               <h3>foods and drinks</h3>
+               <a href="#reservation" class="btn">make a reservation</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-3.jpg" alt="">
+            <div class="flex">
+               <h3>luxurious halls</h3>
+               <a href="#contact" class="btn">contact us</a>
+            </div>
+         </div>
+
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+   </div>
+
+
+
+
+
+<!-- home section ends -->
+
+<!-- availability section starts  -->
+
+<section class="availability" id="availability">
+
+   <form action="" method="post">
+      <div class="flex">
+         <div class="box">
+            <p>check in <span>*</span></p>
+            <input type="date" name="check_in" class="input" required>
+         </div>
+         <div class="box">
+            <p>check out <span>*</span></p>
+            <input type="date" name="check_out" class="input" required>
+         </div>
+         <div class="box">
+            <p>adults <span>*</span></p>
+            <select name="adults" class="input" required>
+               <option value="1">1 adult</option>
+               <option value="2">2 adults</option>
+               <option value="3">3 adults</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>childs <span>*</span></p>
+            <select name="childs" class="input" required>
+               <option value="-">0 child</option>
+               <option value="1">1 child</option>
+               <option value="2">2 childs</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>rooms <span>*</span></p>
+            <select name="rooms" class="input" required>
+               <option value="1">1 room $20</option>
+               <option value="2">2 rooms $40</option>
+            </select>
+         </div>
+      </div>
+      <input type="submit" value="check availability" name="check" class="btn">
+   </form>
+
+</section>
+
+<!-- availability section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img-1.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>best staff</h3>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus unde?</p>
+         <a href="#reservation" class="btn">make a reservation</a>
+      </div>
+   </div>
+
+   <div class="row revers">
+      <div class="image">
+         <img src="images/about-img-2.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>best foods</h3>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus unde?</p>
+         <a href="#contact" class="btn">contact us</a>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img-3.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>swimming pool</h3>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus unde?</p>
+         <a href="#availability" class="btn">check availability</a>
+      </div>
+   </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- services section starts  -->
+
+<section class="services">
+
+   <div class="box-container">
+
+      <div class="mbox">
+         <img src="images/icon-1.png" alt="">
+         <h3>food & drinks</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+      <div class="mbox">
+         <img src="images/icon-2.png" alt="">
+         <h3>outdoor dining</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+      <div class="mbox">
+         <img src="images/icon-3.png" alt="">
+         <h3>beach view</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+      <div class="mbox">
+         <img src="images/icon-4.png" alt="">
+         <h3>decorations</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+      <div class="mbox">
+         <img src="images/icon-5.png" alt="">
+         <h3>swimming pool</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+      <div class="mbox">
+         <img src="images/icon-6.png" alt="">
+         <h3>resort beach</h3>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- reservation section starts  -->
+
+
+
+  
+
+   <section class="reservation" id="reservation">
+      <form id="reservationForm">
+         <h3>Make a Reservation</h3>
+         <div class="flex">
+            <div class="box">
+               <p>Check in <span>*</span></p>
+               <input type="date" name="check_in" class="input" required>
+            </div>
+            <div class="box">
+               <p>Check out <span>*</span></p>
+               <input type="date" name="check_out" class="input" required>
+            </div>
+            <div class="box">
+               <p>Adults <span>*</span></p>
+               <select name="adults" class="input" required>
+                  <option value="1">1 adult</option>
+                  <option value="2">2 adults</option>
+                  <option value="3">3 adults</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Children <span>*</span></p>
+               <select name="childs" class="input" required>
+                  <option value="0">0 child</option>
+                  <option value="1">1 child</option>
+                  <option value="2">2 children</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Rooms <span>*</span></p>
+               <select name="rooms" class="input" required>
+                  <option value="1">1 room $20</option>
+                  <option value="2">2 rooms $40</option>
+                  <option value="3">3 rooms $60</option>
+               </select>
+            </div>
+         </div>
+         <input type="submit" value="Make Reservation" class="btn">
+      </form>
+   
+      <!-- Popup Modal -->
+      <div class="modal" id="availabilityModal">
+         <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+         </div>
+      </div>
+   </section>
+   
+   <!-- My Reservation Section -->
+   <section class="myreservation" id="myreservation" style="padding: 2rem; background: #160801;">
+      <h2>My Reservation</h2>
+      <div id="myReservationContent" style="display: none;">
+         <ul>
+            <li><strong>Check In:</strong> <span id="myCheckIn"></span></li>
+            <li><strong>Check Out:</strong> <span id="myCheckOut"></span></li>
+            <li><strong>Adults:</strong> <span id="myAdults"></span></li>
+            <li><strong>Children:</strong> <span id="myChilds"></span></li>
+            <li><strong>Rooms:</strong> <span id="myRooms"></span></li>
+         </ul>
+      </div>
+      <p id="noReservationMessage" style="color: #888;">No reservation found.</p>
+      <button id="cancelReservationBtn" style="margin-top: 1rem; padding: 0.5rem 1rem; background: rgb(114, 69, 5); color: white; border: none; cursor: pointer;">
+         Cancel Reservation
+      </button>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            const reservationContent = document.getElementById("myReservationContent");
+            const noReservationMessage = document.getElementById("noReservationMessage");
+            const cancelBtn = document.getElementById("cancelReservationBtn");
+         
+            // Simulate loading reservation from localStorage or other source
+            const reservation = JSON.parse(localStorage.getItem("reservation")); // example structure
+         
+            if (reservation) {
+               document.getElementById("myCheckIn").textContent = reservation.checkIn;
+               document.getElementById("myCheckOut").textContent = reservation.checkOut;
+               document.getElementById("myAdults").textContent = reservation.adults;
+               document.getElementById("myChilds").textContent = reservation.children;
+               document.getElementById("myRooms").textContent = reservation.rooms;
+         
+               reservationContent.style.display = "block";
+               noReservationMessage.style.display = "none";
+            } else {
+               reservationContent.style.display = "none";
+               noReservationMessage.style.display = "block";
+            }
+         
+            // Cancel button click
+            if (cancelBtn) {
+               cancelBtn.addEventListener("click", function () {
+                  const confirmCancel = confirm("Are you sure you want to cancel your reservation?");
+                  if (confirmCancel) {
+                     localStorage.removeItem("reservation"); // clear saved data
+                     reservationContent.style.display = "none";
+                     noReservationMessage.style.display = "block";
+                     alert("Your reservation has been cancelled.");
+                  }
+               });
+            }
+         });
+         </script>
+         
+      
+   </section>
+   
+   <script>
+      const form = document.getElementById("reservationForm");
+      const modal = document.getElementById("availabilityModal");
+      const modalMessage = document.getElementById("modalMessage");
+      const closeModal = document.querySelector(".close");
+   
+      form.addEventListener("submit", function (e) {
+         e.preventDefault();
+   
+         const reservation = {
+            check_in: form.check_in.value,
+            check_out: form.check_out.value,
+            adults: form.adults.value,
+            childs: form.childs.value,
+            rooms: form.rooms.value
+         };
+   
+         // Save to localStorage
+         localStorage.setItem("reservationDetails", JSON.stringify(reservation));
+   
+         // Show modal
+         modalMessage.textContent = "Reservation saved successfully!";
+         modal.style.display = "block";
+   
+         // Update "My Reservation"
+         updateMyReservationSection(reservation);
+      });
+   
+      closeModal.onclick = function () {
+         modal.style.display = "none";
+      };
+   
+      window.onclick = function (event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      };
+   
+      function updateMyReservationSection(data) {
+         document.getElementById("myCheckIn").textContent = data.check_in;
+         document.getElementById("myCheckOut").textContent = data.check_out;
+         document.getElementById("myAdults").textContent = data.adults;
+         document.getElementById("myChilds").textContent = data.childs;
+         document.getElementById("myRooms").textContent = data.rooms;
+         document.getElementById("myReservationContent").style.display = "block";
+         document.getElementById("noReservationMessage").style.display = "none";
+      }
+   
+      // Load stored reservation on page load
+      window.addEventListener("DOMContentLoaded", () => {
+         const saved = localStorage.getItem("reservationDetails");
+         if (saved) {
+            const data = JSON.parse(saved);
+            updateMyReservationSection(data);
+         }
+      });
+   </script>
+
+
+<!-- reservation section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+   <div class="swiper gallery-slider">
+      <div class="swiper-wrapper">
+         <img src="images/gallery-img-1.jpg" class="swiper-slide" alt="">
+         <img src="images/gallery-img-2.webp" class="swiper-slide" alt="">
+         <img src="images/gallery-img-3.webp" class="swiper-slide" alt="">
+         <img src="images/gallery-img-4.webp" class="swiper-slide" alt="">
+         <img src="images/gallery-img-5.webp" class="swiper-slide" alt="">
+         <img src="images/gallery-img-6.webp" class="swiper-slide" alt="">
+      </div>
+      <div class="swiper-pagination"></div>
+   </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- contact section starts  -->
+
+
+ 
+
+ <section class="contact" id="contact">
+   <form id="contactForm">
+     <h3>Send us a message</h3>
+     <input type="text" id="name" name="name" required maxlength="50" placeholder="Enter your name" class="box">
+     <input type="email" id="email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
+     <input type="tel" id="number" name="number" required pattern="[0-9]{10}" maxlength="10" placeholder="Enter your number" class="box">
+     <textarea id="msg" name="msg" class="box" required maxlength="1000" placeholder="Enter your message" cols="30" rows="5"></textarea>
+     <input type="submit" value="Send Message" class="btn">
+   </form>
+ </section>
+ 
+ <section class="submitted-section" id="submittedSection">
+   <h3>your message's</h3>
+ </section>
+ 
+ <script>
+   document.getElementById('contactForm').addEventListener('submit', function (e) {
+     e.preventDefault(); // prevent form reload
+ 
+     // Get values
+     const name = document.getElementById('name').value.trim();
+     const email = document.getElementById('email').value.trim();
+     const number = document.getElementById('number').value.trim();
+     const msg = document.getElementById('msg').value.trim();
+ 
+     // Create new entry
+     const newEntry = document.createElement('div');
+     newEntry.className = 'submitted-entry';
+     newEntry.innerHTML = `
+       <p><strong>Name:</strong> ${name}</p>
+       <p><strong>Email:</strong> ${email}</p>
+       <p><strong>Number:</strong> ${number}</p>
+       <p><strong>Message:</strong><br>${msg}</p>
+     `;
+ 
+     // Append to submitted section
+     document.getElementById('submittedSection').appendChild(newEntry);
+ 
+     // Reset form
+     this.reset();
+   });
+ </script>
+ >
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+   <div class="swiper reviews-slider">
+
+      <div class="swiper-wrapper">
+         <div class="swiper-slide box">
+            <img src="images/pic-1.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-2.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-3.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-4.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-5.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-6.png" alt="">
+            <h3>john deo</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque aliquid explicabo.</p>
+         </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+   </div>
+
+</section>
+
+<!-- reviews section ends  -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+   <div class="box-container">
+
+      <div class="box">
+         <a href="tel:1234567890"><i class="fas fa-phone"></i> +123-456-7890</a>
+         <a href="tel:1112223333"><i class="fas fa-phone"></i> +111-222-3333</a>
+         <a href="mailto:shakhanas@gmail.com"><i class="fas fa-envelope"></i> shakhanas@gmail.com</a>
+         <a href="#"><i class="fas fa-map-marker-alt"></i> mumbai, india - 400104</a>
+      </div>
+
+      <div class="box">
+         <a href="#home">home</a>
+         <a href="#about">about</a>
+         <a href="#reservation">reservation</a>
+         <a href="#gallery">gallery</a>
+         <a href="#contact">contact</a>
+         <a href="#reviews">reviews</a>
+      </div>
+
+      <div class="box">
+         <a href="#">facebook <i class="fab fa-facebook-f"></i></a>
+         <a href="#">twitter <i class="fab fa-twitter"></i></a>
+         <a href="#">instagram <i class="fab fa-instagram"></i></a>
+         <a href="#">linkedin <i class="fab fa-linkedin"></i></a>
+      </div>
+
+   </div>
+
+   <div class="credit">&copy; copyright @ 2022 by mr. web designer | all rights reseved!</div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
