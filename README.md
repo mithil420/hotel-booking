@@ -41,4 +41,3 @@ JavaScript (Vanilla)
 Swiper.js (for sliders)
 
 Font Awesome (for icons)
-![Uploading Screenshot 2025-04-22 114512.png…]()
