@@ -1,3 +1,4 @@
+
 🏨 Responsive Hotel Booking Website
 A fully responsive, modern hotel booking website built with HTML, CSS, JavaScript, and Swiper.js. This project simulates a complete front-end booking experience with interactive sliders, reservation forms, and dynamic UI updates using browser storage.
 
@@ -40,3 +41,4 @@ JavaScript (Vanilla)
 Swiper.js (for sliders)
 
 Font Awesome (for icons)
+![Uploading Screenshot 2025-04-22 114512.png…]()
